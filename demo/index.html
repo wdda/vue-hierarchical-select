@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/css/uikit.min.css" />
+</head>
+<body>
+
+    <div class="uk-flex uk-flex-center">
+        <div id="app" class="
+        uk-card
+        uk-card-default
+        uk-card-body
+        uk-width-1-2@m"
+        >
+            <h3 class="uk-card-title">Demo Vue Hierarchical Select</h3>
+            <hierarchical-select
+                    :nodes="nodes"
+                    :css-classes="['uk-select', 'uk-margin-bottom']">
+            </hierarchical-select>
+
+            <div class="uk-margin-medium">
+<pre class="uk-background-muted">
+<code class="lang-js">
+new Vue({
+    el: '#app',
+    data: {
+      nodes: [
+        {
+          name: 'test1',
+          id: 2,
+          children: [
+            {name: 'test2', id: 3},
+            {
+              name: 'test3',
+              id: 4,
+              children: [
+                {name: 'test5', id: 5},
+                {name: 'test6', id: 6},
+              ]
+            },
+          ]
+        }
+      ],
+    }
+  })
+</code>
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.3.3/dist/vue.js"></script>
+    <script src="../dist/vue-hierarchical-select.js"></script>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          selected: '',
+          nodes: [
+            {
+              name: 'test1',
+              id: 2,
+              children: [
+                {name: 'test2', id: 3},
+                {
+                  name: 'test3',
+                  id: 4,
+                  children: [
+                    {name: 'test5', id: 5},
+                    {name: 'test6', id: 6},
+                  ]
+                },
+              ]
+            }
+          ],
+        }
+      })
+    </script>
+</body>
+</html>

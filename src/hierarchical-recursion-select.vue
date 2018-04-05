@@ -1,23 +1,25 @@
 <template>
     <div>
         <select v-bind:class="cssClasses"
-                v-on:change="change"
                 v-bind:name="name"
                 v-model="value"
+                @change="change"
+
         >
             <option value="" v-html="optionNameDefault"></option>
             <option v-for="node in nodes" v-bind:value="node[optionValue]" v-html="node[optionName]"></option>
         </select>
-        <template v-for="node in nodes" v-if="value == node[optionValue] && node.children.length">
+
+        <template v-for="node in nodes" v-if="node.children !== undefined && node[optionValue] == value">
             <hierarchical-select-recursion :nodes="node.children"
-                              :selected="selected"
-                              :nodesSelected="nodesSelected"
-                              :name="name"
-                              :option-value="optionValue"
-                              :option-name="optionName"
-                              :css-classes="cssClasses"
-                              :option-name-default="optionNameDefault"
-                              :change-select="changeSelect"
+                                           :nodesSelected="nodesSelected"
+                                           :name="name"
+                                           :option-value="optionValue"
+                                           :option-name="optionName"
+                                           :css-classes="cssClasses"
+                                           :option-name-default="optionNameDefault"
+                                           :change-select="changeSelect"
+                                           :removePreset="removePreset"
             >
             </hierarchical-select-recursion>
         </template>
@@ -29,34 +31,43 @@
     name: 'HierarchicalSelectRecursion',
     props: [
       'nodes',
-      'selected',
       'nodesSelected',
       'name',
       'optionValue',
       'optionName',
       'cssClasses',
       'optionNameDefault',
-      'changeSelect'
+      'changeSelect',
+      'removePreset'
     ],
-    created: function () {
-      self = this;
+    mounted: function () {
+      self = this
 
       if (this.nodesSelected) {
         this.nodes.forEach(function (node) {
           if (self.nodesSelected.indexOf(node[self.optionValue]) != -1) {
-            self.value = node[self.optionValue];
+            self.value = node[self.optionValue]
+            self.removePreset(self.value)
           }
         })
       }
     },
     methods: {
       change () {
-        this.$children.forEach(function(childComponent) {
-          childComponent.value = ''
-        })
+        self = this
 
         if (this.changeSelect) {
-          this.changeSelect(this.value);
+          let newValue = ''
+
+          if (this.value != '') {
+            newValue = this.value
+          } else {
+            if (this.$parent.value !== undefined) {
+              newValue = this.$parent.value
+            }
+          }
+
+          this.changeSelect(newValue)
         }
       }
     },

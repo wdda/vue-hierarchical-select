@@ -2,6 +2,10 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
+  },
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),

@@ -28,14 +28,13 @@ A Hierarchical select plugin for vue2
 
 ```html
     <div id="app">
-        <hierarchical-select :nodes="nodes" :selected="selected"></hierarchical-select>
+        <hierarchical-select :nodes="nodes"></hierarchical-select>
     </div>
     
    <script>
       new Vue({
         el: '#app',
         data: {
-          selected: '',
           nodes: [
             {
               name: 'test1',

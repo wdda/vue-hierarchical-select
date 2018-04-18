@@ -20,6 +20,7 @@
                                            :option-name-default="optionNameDefault"
                                            :change-select="changeSelect"
                                            :removePreset="removePreset"
+                                           v-if="node.children.length"
             >
             </hierarchical-select-recursion>
         </template>

@@ -52,15 +52,19 @@ A Hierarchical select plugin for vue2
 
 ## API
 
-| Props        | Type           | Default  |
-| ------------- |-------------| -----|
-| nodes      | Array |  |
-| selected      | String  or  Number      | ''  |
-| name | String      |    name[] |
-| option-value | String      |    id |
-| option-name | String      |   name |
-| option-name-default | String      |    - choice - |
-| css-classes | Array  or  Object      |    vue-hierarchical-select |
+| Props               | Type               | Default                 | Description                                                                                    |
+|---------------------|--------------------|-------------------------|------------------------------------------------------------------------------------------------|
+| nodes               | Array              |                         | Tree of data                                                                                   |
+| selected            | String  or  Number | null                    | Selected value                                                                                 |
+| name                | String             | name[]                  | Input name                                                                                     |
+| option-value        | String             | id                      |                                                                                                |
+| option-name         | String             | name                    |                                                                                                |
+| option-name-default | String             | - choice -              |                                                                                                |
+| css-classes         | Array  or  Object  | vue-hierarchical-select | For input element                                                                                  |
+| css-styles          | String             | null                    | For input element                                                                              |
+| onlyLast            | Boolean            | false                   | Return only last selected option                                                               |
+| transitionName      | String             | null                    | Name of transition classes                                                                     |
+| maxColumnWidth      | Number             | 10000                   | max-width for change direction to 'row' or 'column', where 0 is only row and 10000 only column |
 
 
 ## Methods

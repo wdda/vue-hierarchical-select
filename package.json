@@ -43,5 +43,5 @@
     "build": "cross-env NODE_ENV=production webpack --progress",
     "watch": "cross-env NODE_ENV=production webpack  --watch --progress"
   },
-  "version": "1.0.2"
+  "version": "1.0.4"
 }
